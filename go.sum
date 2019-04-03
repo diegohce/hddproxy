@@ -1,0 +1,4 @@
+github.com/diegohce/logger v0.1.1 h1:HlWF587MZML5pnohuHTdWNig5s57prt6nMyIgNeLeCI=
+github.com/diegohce/logger v0.1.1/go.mod h1:JXLCLsqp275cVd6/o+Veoy2RD3TJi4XG/wlq1SK8erU=
+github.com/gorilla/websocket v1.4.0 h1:WDFjx/TMzVgy9VdMMQi2K2Emtwi2QcUQsztZ/zLaH/Q=
+github.com/gorilla/websocket v1.4.0/go.mod h1:E7qHFY5m1UJ88s3WnNqhKjPHQ0heANvMoAMk2YaljkQ=
