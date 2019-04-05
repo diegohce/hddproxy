@@ -8,10 +8,10 @@ import (
 
 func TestConfig(t *testing.T) {
 
-	os.Setenv("KPMPROXY_TCP_BIND", ":6060")
-	os.Setenv("KPMPROXY_DIRS", "/home/diego/tmp/stuff:/home/diego/tmp/stuff2")
-	os.Setenv("KPMPROXY_SHORTPOLL", "10")
-	os.Setenv("KPMPROXY_LONGPOLL", "20")
+	os.Setenv("HDDPROXY_TCP_BIND", ":6060")
+	os.Setenv("HDDPROXY_DIRS", "/home/diego/tmp/stuff:/home/diego/tmp/stuff2")
+	os.Setenv("HDDPROXY_SHORTPOLL", "10")
+	os.Setenv("HDDPROXY_LONGPOLL", "20")
 
 	c := configFromEnv()
 
@@ -31,4 +31,3 @@ func TestConfig(t *testing.T) {
 		t.Errorf("Bad shortPoll: %v. Expected 10\n", c.shortPoll)
 	}
 }
-

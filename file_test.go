@@ -11,7 +11,7 @@ func TestFileWriterTo(t *testing.T) {
 	var dir = "/home/diego/tmp/stuff"
 	var rawFile = []byte(`{"dir":"/home/diego/tmp/stuff", "name":"outputfile.txt", "body":"Hola mundo file content"}`)
 
-	f, err := kpmFileFromJson(rawFile)
+	f, err := hddFileFromJSON(rawFile)
 	if err != nil {
 		t.Error(err)
 	}
@@ -33,12 +33,11 @@ func TestFileWriterTo(t *testing.T) {
 
 }
 
-
 func TestFileWriter(t *testing.T) {
 
 	var rawFile = []byte(`{"dir":"/home/diego/tmp/stuff", "name":"outputfile2.txt", "body":"Hola mundo file content"}`)
 
-	f, err := kpmFileFromJson(rawFile)
+	f, err := hddFileFromJSON(rawFile)
 	if err != nil {
 		t.Error(err)
 	}
@@ -59,4 +58,3 @@ func TestFileWriter(t *testing.T) {
 	}
 
 }
-

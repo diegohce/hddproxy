@@ -1,4 +1,4 @@
-module kpmproxy
+module github.com/diegohce/hddproxy
 
 go 1.12
 

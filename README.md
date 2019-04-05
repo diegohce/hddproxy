@@ -1,26 +1,26 @@
-# KPM Proxy
-KPM Proxy is a dirver for web applications to access small text files on the local hard drive.
+# HDD Proxy
+HDD Proxy is a dirver for web applications to access small text files on the local hard drive.
 It runs as a service, preferable listening on `localhost`.
 
 # How does it work
-KPM Proxy offers an endpoint to write files to disk, and has available a websocket to send text files to web browser.
+HDD Proxy offers an endpoint to write files to disk, and has available a websocket to send text files to web browser.
 
 # Environment variables
 Example env variables and their default values.
 ```bash
-KPMPROXY_TCP_BIND="127.0.0.1:8080"
-KPMPROXY_LONGPOLL="5"
-KPMROXY_SHORTPOLL="1"
-KPMPROXY_DIRS=""
+HDDPROXY_TCP_BIND="127.0.0.1:8080"
+HDDPROXY_LONGPOLL="5"
+HDDROXY_SHORTPOLL="1"
+HDDPROXY_DIRS=""
 ```
-`KPMPROXY_DIRS` variable is a list of directories separated with a colon (`:`) as in:
+`HDDPROXY_DIRS` variable is a list of directories separated with a colon (`:`) as in:
 ```bash
-KPMPROXY_DIRS="/home/diego/tmp/stuff:/home/diego/tmp/stuff2"
+HDDPROXY_DIRS="/home/diego/tmp/stuff:/home/diego/tmp/stuff2"
 ```
 This is the only mandatory variable.
 
 # Write
-To write files make an HTTP POST to `http://127.0.0.1:8080/kpmproxy/write` 
+To write files make an HTTP POST to `http://127.0.0.1:8080/hddproxy/write` 
 ```json
 {
     "body": "Hello, World!",

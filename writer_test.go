@@ -19,11 +19,11 @@ func TestWriterRequest(t *testing.T) {
 
 	var rawFile = []byte(`{"dir":"/home/diego/tmp/stuff", "name":"testwriter.txt", "body":"Hello, World!"}`)
 
-	f, _ := kpmFileFromJson(rawFile)
+	f, _ := hddFileFromJSON(rawFile)
 
 	payload := bytes.NewReader(rawFile)
 
-	req, err := http.NewRequest("POST", "/kpmproxy/write", payload)
+	req, err := http.NewRequest("POST", "/hddproxy/write", payload)
 	if err != nil {
 		t.Error(err)
 	}
@@ -36,7 +36,6 @@ func TestWriterRequest(t *testing.T) {
 		t.Errorf("Response code was %v: want 200", res.Code)
 	}
 
-
 	b, err := ioutil.ReadFile(path.Join(dir, f.Name))
 	if err != nil {
 		t.Error(err)
@@ -47,5 +46,3 @@ func TestWriterRequest(t *testing.T) {
 	}
 
 }
-
-

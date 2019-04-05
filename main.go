@@ -12,12 +12,11 @@ var (
 	log *logger.Logger
 )
 
-
 func main() {
 
 	configFromEnv()
 
-	log = logger.New("kpm-proxy - ")
+	log = logger.New("hdd-proxy - ")
 
 	if len(config.dirs) == 0 {
 		log.Error().Println("Oh! No dirs to scan... :'(")
@@ -28,8 +27,8 @@ func main() {
 		return true
 	}
 
-	http.HandleFunc("/kpmproxy/read", wsocketHandler)
-	http.HandleFunc("/kpmproxy/write", writeRequest)
+	http.HandleFunc("/hddproxy/read", wsocketHandler)
+	http.HandleFunc("/hddproxy/write", writeRequest)
 
 	http.ListenAndServe(config.tcpBind, nil)
 }

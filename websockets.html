@@ -8,7 +8,7 @@
 	var input = document.getElementById("input");
 	var output = document.getElementById("output");
 	var file = document.getElementById("file");
-	var socket = new WebSocket("ws://localhost:8080/kpmproxy/read");
+	var socket = new WebSocket("ws://localhost:8080/hddproxy/read");
 
 	socket.onopen = function () {
 		output.innerHTML += "Status: Connected\n";

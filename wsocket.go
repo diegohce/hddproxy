@@ -12,7 +12,6 @@ var upgrader = websocket.Upgrader{
 	WriteBufferSize: 1024,
 }
 
-
 func wsocketHandler(w http.ResponseWriter, r *http.Request) {
 
 	conn, err := upgrader.Upgrade(w, r, nil)
@@ -43,7 +42,7 @@ func wsocketHandler(w http.ResponseWriter, r *http.Request) {
 	for i, d := range config.dirs {
 		log.Info().Println("Starting scanner for", d)
 
-		scanners[i] = &dirScanner {
+		scanners[i] = &dirScanner{
 			dir:           d,
 			longPollWait:  config.longPoll,
 			shortPollWait: config.shortPoll,
@@ -79,18 +78,16 @@ func wsocketHandler(w http.ResponseWriter, r *http.Request) {
 		s.stop()
 	}*/
 
-
-/*	scanner := &dirScanner {
-		dir:           "/home/diego/tmp/stuff",
-		longPollWait:  time.Duration(5*time.Second),
-		shortPollWait: time.Duration(1*time.Second),
-	}
-
-	for f := range scanner.start() {
-		if err := conn.WriteMessage(websocket.TextMessage, []byte(f)); err != nil {
-			log.Error().Println(err)
+	/*	scanner := &dirScanner {
+			dir:           "/home/diego/tmp/stuff",
+			longPollWait:  time.Duration(5*time.Second),
+			shortPollWait: time.Duration(1*time.Second),
 		}
-	}
-	scanner.stop()*/
-}
 
+		for f := range scanner.start() {
+			if err := conn.WriteMessage(websocket.TextMessage, []byte(f)); err != nil {
+				log.Error().Println(err)
+			}
+		}
+		scanner.stop()*/
+}

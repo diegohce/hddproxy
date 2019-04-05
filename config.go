@@ -14,7 +14,6 @@ type configType struct {
 	longPoll  time.Duration
 }
 
-
 var (
 	config configType
 )
@@ -23,15 +22,15 @@ func configFromEnv() configType {
 
 	nodirs := []string{}
 
-	config.tcpBind = getEnvString("KPMPROXY_TCP_BIND", "127.0.0.1:8080")
+	config.tcpBind = getEnvString("HDDPROXY_TCP_BIND", "127.0.0.1:8080")
 
-	config.dirs = getEnvStrings("KPMPROXY_DIRS", nodirs, ":")
+	config.dirs = getEnvStrings("HDDPROXY_DIRS", nodirs, ":")
 
-	sp := getEnvInt("KPMPROXY_SHORTPOLL", 1)
-	lp := getEnvInt("KPMPROXY_LONGPOLL", 5)
+	sp := getEnvInt("HDDPROXY_SHORTPOLL", 1)
+	lp := getEnvInt("HDDPROXY_LONGPOLL", 5)
 
-	config.shortPoll = time.Duration(sp)*time.Second
-	config.longPoll = time.Duration(lp)*time.Second
+	config.shortPoll = time.Duration(sp) * time.Second
+	config.longPoll = time.Duration(lp) * time.Second
 
 	return config
 }
@@ -68,4 +67,3 @@ func getEnvStrings(varname string, def []string, sep string) []string {
 	}
 	return def
 }
-

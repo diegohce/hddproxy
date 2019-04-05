@@ -11,15 +11,15 @@ import (
 )
 
 var (
-	dir string = "/home/diego/tmp/stuff"
+	dir = "/home/diego/tmp/stuff"
 )
 
 func TestDirScanner(t *testing.T) {
 
-	scanner := &dirScanner {
+	scanner := &dirScanner{
 		dir:           dir,
-		shortPollWait: time.Duration(1*time.Second),
-		longPollWait:  time.Duration(5*time.Second),
+		shortPollWait: time.Duration(1 * time.Second),
+		longPollWait:  time.Duration(5 * time.Second),
 	}
 
 	ch := scanner.start()
@@ -34,10 +34,9 @@ func TestDirScanner(t *testing.T) {
 	}
 }
 
-
 func TestMain(m *testing.M) {
 
-	log = logger.New("kpm-proxy-test - ")
+	log = logger.New("hdd-proxy-test - ")
 
 	ioutil.WriteFile(path.Join(dir, "file1.txt"), []byte("hola mundo1"), 0600)
 	ioutil.WriteFile(path.Join(dir, "file2.txt"), []byte("hola mundo2"), 0600)
@@ -45,4 +44,3 @@ func TestMain(m *testing.M) {
 
 	m.Run()
 }
-

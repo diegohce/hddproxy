@@ -2,8 +2,8 @@ package main
 
 import (
 	"io/ioutil"
-	"path"
 	"os"
+	"path"
 	"time"
 )
 
@@ -42,11 +42,10 @@ func (ds *dirScanner) stop() {
 	<-ds.wait
 }
 
-
-func (ds * dirScanner) dirWorker(ch chan string) {
+func (ds *dirScanner) dirWorker(ch chan string) {
 
 	defer func() {
-		if r:= recover(); r != nil {
+		if r := recover(); r != nil {
 			log.Debug().Println(r)
 		}
 	}()
@@ -85,7 +84,7 @@ func (ds * dirScanner) dirWorker(ch chan string) {
 				log.Error().Println(err, "reading", fullName)
 			}
 
-			f := &kpmFile{
+			f := &hddFile{
 				Dir:  ds.dir,
 				Name: f.Name(),
 				Body: string(b),
@@ -111,4 +110,3 @@ func (ds * dirScanner) dirWorker(ch chan string) {
 		}
 	}
 }
-

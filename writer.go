@@ -6,10 +6,9 @@ import (
 	"net/http"
 )
 
-
 func responseWithError(w http.ResponseWriter, err error) {
 	w.WriteHeader(400)
-	fmt.Fprintf(w, `{"error":"%s"}`, err.Error() )
+	fmt.Fprintf(w, `{"error":"%s"}`, err.Error())
 }
 
 func writeRequest(w http.ResponseWriter, r *http.Request) {
@@ -23,7 +22,7 @@ func writeRequest(w http.ResponseWriter, r *http.Request) {
 
 	log.Info().Println("Received write request len:", len(b))
 
-	f, err := kpmFileFromJson(b)
+	f, err := hddFileFromJSON(b)
 	if err != nil {
 		responseWithError(w, err)
 		return
@@ -36,4 +35,3 @@ func writeRequest(w http.ResponseWriter, r *http.Request) {
 
 	log.Info().Println(f.Name, "written into", f.Dir)
 }
-

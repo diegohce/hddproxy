@@ -6,32 +6,31 @@ import (
 	"path"
 )
 
-type kpmFile struct {
+type hddFile struct {
 	Dir  string `json:"dir"`
 	Name string `json:"name"`
 	Body string `json:"body"`
 }
 
-func (f *kpmFile) write() error {
+func (f *hddFile) write() error {
 	fullname := path.Join(f.Dir, f.Name)
 	return ioutil.WriteFile(fullname, []byte(f.Body), 0644)
 }
 
-func (f *kpmFile) writeTo(dir string) error {
+func (f *hddFile) writeTo(dir string) error {
 	fullname := path.Join(dir, f.Name)
 	return ioutil.WriteFile(fullname, []byte(f.Body), 0644)
 }
 
-func (f *kpmFile) Marshal() ([]byte, error) {
+func (f *hddFile) Marshal() ([]byte, error) {
 	return json.Marshal(f)
 }
 
-func kpmFileFromJson(data []byte) (*kpmFile, error) {
+func hddFileFromJSON(data []byte) (*hddFile, error) {
 
-	f := &kpmFile{}
+	f := &hddFile{}
 
 	err := json.Unmarshal(data, f)
 
 	return f, err
 }
-
