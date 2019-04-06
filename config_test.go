@@ -31,3 +31,19 @@ func TestConfig(t *testing.T) {
 		t.Errorf("Bad shortPoll: %v. Expected 10\n", c.shortPoll)
 	}
 }
+
+func TestConfigSep(t *testing.T) {
+	os.Setenv("HDDPROXY_DIRS", "/home/diego/tmp/stuff:/home/diego/tmp/stuff2")
+	c := configFromEnv()
+	if c.dirs[0] != "/home/diego/tmp/stuff" || c.dirs[1] != "/home/diego/tmp/stuff2" {
+		t.Error("Failed on dirs array")
+	}
+
+	os.Setenv("HDDPROXY_DIRS_SEP", ";")
+	os.Setenv("HDDPROXY_DIRS", "/home/diego/tmp/stuff;/home/diego/tmp/stuff2")
+	c = configFromEnv()
+	if c.dirs[0] != "/home/diego/tmp/stuff" || c.dirs[1] != "/home/diego/tmp/stuff2" {
+		t.Error("Failed on dirs array")
+	}
+}
+

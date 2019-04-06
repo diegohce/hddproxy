@@ -11,13 +11,15 @@ Example env variables and their default values.
 HDDPROXY_TCP_BIND="127.0.0.1:8080"
 HDDPROXY_LONGPOLL="5"
 HDDROXY_SHORTPOLL="1"
+HDDPROXY_DIRS_SEP=":"
 HDDPROXY_DIRS=""
 ```
-`HDDPROXY_DIRS` variable is a list of directories separated with a colon (`:`) as in:
+`HDDPROXY_DIRS` variable is a list of directories separated (by default) with a colon (`:`) as in:
 ```bash
 HDDPROXY_DIRS="/home/diego/tmp/stuff:/home/diego/tmp/stuff2"
 ```
 This is the only mandatory variable.
+Directories separator (`:`) can be changed setting `HDDPROXY_DIRS_SEP` variable.
 
 # Write
 To write files make an HTTP POST to `http://127.0.0.1:8080/hddproxy/write` 
@@ -28,7 +30,7 @@ To write files make an HTTP POST to `http://127.0.0.1:8080/hddproxy/write`
     "name": "hi.txt"
 }
 ```
-An status 200 OK response means writing was a success.
+A response with status 200 OK means writing was successful.
 
 # Read
 For an example on how to read files, see `websockets.html` file.

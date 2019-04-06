@@ -24,7 +24,9 @@ func configFromEnv() configType {
 
 	config.tcpBind = getEnvString("HDDPROXY_TCP_BIND", "127.0.0.1:8080")
 
-	config.dirs = getEnvStrings("HDDPROXY_DIRS", nodirs, ":")
+	sep := getEnvString("HDDPROXY_DIRS_SEP", ":")
+
+	config.dirs = getEnvStrings("HDDPROXY_DIRS", nodirs, sep)
 
 	sp := getEnvInt("HDDPROXY_SHORTPOLL", 1)
 	lp := getEnvInt("HDDPROXY_LONGPOLL", 5)
