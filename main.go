@@ -30,5 +30,7 @@ func main() {
 	http.HandleFunc("/hddproxy/read", wsocketHandler)
 	http.HandleFunc("/hddproxy/write", writeRequest)
 
-	http.ListenAndServe(config.tcpBind, nil)
+	if err := http.ListenAndServe(config.tcpBind, nil); err != nil {
+		log.Error().Println(err)
+	}
 }
