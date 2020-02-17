@@ -13,6 +13,11 @@ func responseWithError(w http.ResponseWriter, err error) {
 
 func writeRequest(w http.ResponseWriter, r *http.Request) {
 
+	if r.Method == http.MethodOptions {
+		preflightCORS(w)
+		return
+	}
+
 	b, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		responseWithError(w, err)
@@ -33,5 +38,15 @@ func writeRequest(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
 	log.Info().Println(f.Name, "written into", f.Dir)
+}
+
+func preflightCORS(w http.ResponseWriter) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "POST")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	w.Header().Set("Access-Control-Max-Age", "3600")
+	w.WriteHeader(http.StatusNoContent)
 }
